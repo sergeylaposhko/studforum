@@ -1,0 +1,32 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "question",
+      "otherEntityName": "question",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "userProfile",
+      "otherEntityName": "userProfile",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "createDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20161217215642",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "answer"
+}

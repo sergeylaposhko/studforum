@@ -1,0 +1,49 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "activity",
+      "otherEntityName": "activity",
+      "otherEntityRelationshipName": "subject"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "question",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "subject"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "feedback",
+      "otherEntityName": "feedback",
+      "otherEntityRelationshipName": "subject"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "relationshipName": "profile",
+      "otherEntityName": "userProfile",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "subject"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "teacher",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20161217215638",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "subject"
+}

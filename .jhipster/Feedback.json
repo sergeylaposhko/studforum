@@ -1,0 +1,32 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "userProfile",
+      "otherEntityName": "userProfile",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "subject",
+      "otherEntityName": "subject",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "changelogDate": "20161217215639",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "feedback"
+}

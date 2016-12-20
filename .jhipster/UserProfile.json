@@ -1,0 +1,54 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityRelationshipName": "profile",
+      "relationshipName": "subject",
+      "otherEntityName": "subject",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "feedback",
+      "otherEntityName": "feedback",
+      "otherEntityRelationshipName": "userProfile"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "question",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "userProfile"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "answer",
+      "otherEntityName": "answer",
+      "otherEntityRelationshipName": "userProfile"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pass",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20161217215637",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "user_profile"
+}

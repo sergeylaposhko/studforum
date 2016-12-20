@@ -1,0 +1,44 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "answer",
+      "otherEntityName": "answer",
+      "otherEntityRelationshipName": "question"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "activity",
+      "otherEntityName": "activity",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "subject",
+      "otherEntityName": "subject",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "userProfile",
+      "otherEntityName": "userProfile",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "createDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20161217215641",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "question"
+}

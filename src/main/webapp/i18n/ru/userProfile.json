@@ -1,0 +1,29 @@
+{
+    "studForumApp": {
+        "userProfile" : {
+            "home": {
+                "title": "User Profiles",
+                "createLabel": "Создать новый User Profile",
+                "createOrEditLabel": "Создать или отредактировать User Profile",
+                "search": "Найти User Profile"
+            },
+            "created": "Новый User Profile создан с идентификатором {{ param }}",
+            "updated": "User Profile обновлен с идентификатором {{ param }}",
+            "deleted": "User Profile удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить User Profile {{ id }}?"
+            },
+            "detail": {
+                "title": "User Profile"
+            },
+            "email": "Email",
+            "pass": "Pass",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "subject": "Subject",
+            "feedback": "Feedback",
+            "question": "Question",
+            "answer": "Answer"
+        }
+    }
+}

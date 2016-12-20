@@ -1,0 +1,54 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserProfileLabel" data-translate="studForumApp.userProfile.home.createOrEditLabel">Create or edit a User Profile</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.userProfile.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.userProfile.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="studForumApp.userProfile.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="vm.userProfile.email"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="studForumApp.userProfile.pass" for="field_pass">Pass</label>
+            <input type="text" class="form-control" name="pass" id="field_pass"
+                    ng-model="vm.userProfile.pass"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="studForumApp.userProfile.firstName" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                    ng-model="vm.userProfile.firstName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="studForumApp.userProfile.lastName" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                    ng-model="vm.userProfile.lastName"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="studForumApp.userProfile.subject" for="field_subject">Subject</label>
+            <select class="form-control" id="field_subject" multiple name="subject" ng-model="vm.userProfile.subjects" ng-options="subject as subject.id for subject in vm.subjects track by subject.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,36 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "question",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "activity"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "subject",
+      "otherEntityName": "subject",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "weight",
+      "fieldType": "Double"
+    }
+  ],
+  "changelogDate": "20161217215640",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "activity"
+}

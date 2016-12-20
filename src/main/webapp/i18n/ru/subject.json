@@ -1,0 +1,28 @@
+{
+    "studForumApp": {
+        "subject" : {
+            "home": {
+                "title": "Subjects",
+                "createLabel": "Создать новый Subject",
+                "createOrEditLabel": "Создать или отредактировать Subject",
+                "search": "Найти Subject"
+            },
+            "created": "Новый Subject создан с идентификатором {{ param }}",
+            "updated": "Subject обновлен с идентификатором {{ param }}",
+            "deleted": "Subject удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Subject {{ id }}?"
+            },
+            "detail": {
+                "title": "Subject"
+            },
+            "name": "Name",
+            "description": "Description",
+            "teacher": "Teacher",
+            "activity": "Activity",
+            "question": "Question",
+            "feedback": "Feedback",
+            "profile": "Profile"
+        }
+    }
+}

@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="studForumApp.question.detail.title">Question</span> {{vm.question.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="studForumApp.question.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{vm.question.createDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="studForumApp.question.text">Text</span></dt>
+        <dd>
+            <span>{{vm.question.text}}</span>
+        </dd>
+        <dt><span data-translate="studForumApp.question.activity">Activity</span></dt>
+        <dd>
+            <a ui-sref="activity-detail({id:vm.question.activity.id})">{{vm.question.activity.id}}</a>
+        </dd>
+        <dt><span data-translate="studForumApp.question.subject">Subject</span></dt>
+        <dd>
+            <a ui-sref="subject-detail({id:vm.question.subject.id})">{{vm.question.subject.id}}</a>
+        </dd>
+        <dt><span data-translate="studForumApp.question.userProfile">User Profile</span></dt>
+        <dd>
+            <a ui-sref="user-profile-detail({id:vm.question.userProfile.id})">{{vm.question.userProfile.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="question-detail.edit({id:vm.question.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -5,6 +5,17 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215637_added_entity_UserProfile.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215638_added_entity_Subject.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215639_added_entity_Feedback.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215640_added_entity_Activity.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215641_added_entity_Question.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215642_added_entity_Answer.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20161217215637_added_entity_constraints_UserProfile.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215639_added_entity_constraints_Feedback.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215640_added_entity_constraints_Activity.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215641_added_entity_constraints_Question.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161217215642_added_entity_constraints_Answer.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

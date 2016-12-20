@@ -1,0 +1,25 @@
+{
+    "studForumApp": {
+        "feedback" : {
+            "home": {
+                "title": "Feedbacks",
+                "createLabel": "Создать новый Feedback",
+                "createOrEditLabel": "Создать или отредактировать Feedback",
+                "search": "Найти Feedback"
+            },
+            "created": "Новый Feedback создан с идентификатором {{ param }}",
+            "updated": "Feedback обновлен с идентификатором {{ param }}",
+            "deleted": "Feedback удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Feedback {{ id }}?"
+            },
+            "detail": {
+                "title": "Feedback"
+            },
+            "text": "Text",
+            "createDate": "Create Date",
+            "userProfile": "User Profile",
+            "subject": "Subject"
+        }
+    }
+}

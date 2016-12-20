@@ -1,0 +1,26 @@
+{
+    "studForumApp": {
+        "activity" : {
+            "home": {
+                "title": "Activities",
+                "createLabel": "Создать новый Activity",
+                "createOrEditLabel": "Создать или отредактировать Activity",
+                "search": "Найти Activity"
+            },
+            "created": "Новый Activity создан с идентификатором {{ param }}",
+            "updated": "Activity обновлен с идентификатором {{ param }}",
+            "deleted": "Activity удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Activity {{ id }}?"
+            },
+            "detail": {
+                "title": "Activity"
+            },
+            "name": "Name",
+            "description": "Description",
+            "weight": "Weight",
+            "question": "Question",
+            "subject": "Subject"
+        }
+    }
+}

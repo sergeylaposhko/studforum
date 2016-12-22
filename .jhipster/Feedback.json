@@ -5,7 +5,7 @@
       "relationshipType": "many-to-one",
       "relationshipName": "userProfile",
       "otherEntityName": "userProfile",
-      "otherEntityField": "id"
+      "otherEntityField": "email"
     },
     {
       "relationshipType": "many-to-one",

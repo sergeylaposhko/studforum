@@ -32,7 +32,7 @@
                     <td>{{feedback.text}}</td>
                         <td>{{feedback.createDate | date:'mediumDate'}}</td>
                     <td>
-                        <a ui-sref="user-profile-detail({id:feedback.userProfile.id})">{{feedback.userProfile.id}}</a>
+                        <a ui-sref="user-profile-detail({id:feedback.userProfile.id})">{{feedback.userProfile.email}}</a>
                     </td>
                     <td>
                         <a ui-sref="subject-detail({id:feedback.subject.id})">{{feedback.subject.id}}</a>

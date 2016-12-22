@@ -1,9 +1,14 @@
 package ua.knure.laposhko.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.knure.laposhko.domain.Feedback;
 
+import ua.knure.laposhko.domain.User;
+import ua.knure.laposhko.domain.UserProfile;
 import ua.knure.laposhko.repository.FeedbackRepository;
+import ua.knure.laposhko.repository.UserProfileRepository;
+import ua.knure.laposhko.service.UserService;
 import ua.knure.laposhko.web.rest.util.HeaderUtil;
 
 import org.slf4j.Logger;
@@ -16,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,9 +33,15 @@ import java.util.Optional;
 public class FeedbackResource {
 
     private final Logger log = LoggerFactory.getLogger(FeedbackResource.class);
-        
+
     @Inject
     private FeedbackRepository feedbackRepository;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     /**
      * POST  /feedbacks : Create a new feedback.
@@ -45,6 +57,11 @@ public class FeedbackResource {
         if (feedback.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("feedback", "idexists", "A new feedback cannot already have an ID")).body(null);
         }
+        feedback.setCreateDate(LocalDate.now());
+        User userWithAuthorities = userService.getUserWithAuthorities();
+        UserProfile userProfile = userProfileRepository.findByEmail(userWithAuthorities.getEmail());
+        feedback.setUserProfile(userProfile);
+
         Feedback result = feedbackRepository.save(feedback);
         return ResponseEntity.created(new URI("/api/feedbacks/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("feedback", result.getId().toString()))

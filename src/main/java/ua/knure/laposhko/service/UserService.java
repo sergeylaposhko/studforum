@@ -1,9 +1,12 @@
 package ua.knure.laposhko.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.knure.laposhko.domain.Authority;
 import ua.knure.laposhko.domain.User;
+import ua.knure.laposhko.domain.UserProfile;
 import ua.knure.laposhko.repository.AuthorityRepository;
 import ua.knure.laposhko.repository.PersistentTokenRepository;
+import ua.knure.laposhko.repository.UserProfileRepository;
 import ua.knure.laposhko.repository.UserRepository;
 import ua.knure.laposhko.security.AuthoritiesConstants;
 import ua.knure.laposhko.security.SecurityUtils;
@@ -44,6 +47,9 @@ public class UserService {
 
     @Inject
     private AuthorityRepository authorityRepository;
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
@@ -105,6 +111,13 @@ public class UserService {
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
+
+        UserProfile userProfile = new UserProfile();
+        userProfile.setEmail(newUser.getEmail());
+        userProfile.setFirstName(newUser.getFirstName());
+        userProfile.setLastName(newUser.getLastName());
+        userProfileRepository.save(userProfile);
+
         return newUser;
     }
 
@@ -132,6 +145,13 @@ public class UserService {
         user.setResetDate(ZonedDateTime.now());
         user.setActivated(true);
         userRepository.save(user);
+
+
+        UserProfile userProfile = new UserProfile();
+        userProfile.setEmail(user.getEmail());
+        userProfile.setFirstName(user.getFirstName());
+        userProfile.setLastName(user.getLastName());
+        userProfileRepository.save(userProfile);
         log.debug("Created Information for User: {}", user);
         return user;
     }

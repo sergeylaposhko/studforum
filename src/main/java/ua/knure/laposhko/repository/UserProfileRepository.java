@@ -19,4 +19,6 @@ public interface UserProfileRepository extends JpaRepository<UserProfile,Long> {
     @Query("select userProfile from UserProfile userProfile left join fetch userProfile.subjects where userProfile.id =:id")
     UserProfile findOneWithEagerRelationships(@Param("id") Long id);
 
+    UserProfile findByEmail(String email);
+
 }

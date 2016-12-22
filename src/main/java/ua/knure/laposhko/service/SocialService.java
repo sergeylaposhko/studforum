@@ -1,8 +1,10 @@
 package ua.knure.laposhko.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.knure.laposhko.domain.Authority;
 import ua.knure.laposhko.domain.User;
 import ua.knure.laposhko.repository.AuthorityRepository;
+import ua.knure.laposhko.repository.UserProfileRepository;
 import ua.knure.laposhko.repository.UserRepository;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -43,6 +45,9 @@ public class SocialService {
 
     @Inject
     private MailService mailService;
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     public void deleteUserSocialConnection(String login) {
         ConnectionRepository connectionRepository = usersConnectionRepository.createConnectionRepository(login);
@@ -101,6 +106,12 @@ public class SocialService {
         newUser.setActivated(true);
         newUser.setAuthorities(authorities);
         newUser.setLangKey(langKey);
+
+        ua.knure.laposhko.domain.UserProfile userProfile1 = new ua.knure.laposhko.domain.UserProfile();
+        userProfile1.setEmail(newUser.getEmail());
+        userProfile1.setFirstName(newUser.getFirstName());
+        userProfile1.setLastName(newUser.getLastName());
+        userProfileRepository.save(userProfile1);
 
         return userRepository.save(newUser);
     }

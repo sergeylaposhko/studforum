@@ -4,13 +4,13 @@ add some initial data
 +remote user profile from entities
 +feedback - default creation date
 +feedback - default user
-feedback - display user name
++feedback - display user name
 view feedbacks in the subject details page
 questions - to the activities page
-questions default create date
++questions default create date
 question default activity
-question default subject from activity
-question default user
++question default subject from activity
++question default user
 answers to question detail page
 answer default create page
 answer default question

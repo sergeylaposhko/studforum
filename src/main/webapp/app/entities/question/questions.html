@@ -33,13 +33,13 @@
                         <td>{{question.createDate | date:'mediumDate'}}</td>
                     <td>{{question.text}}</td>
                     <td>
-                        <a ui-sref="activity-detail({id:question.activity.id})">{{question.activity.id}}</a>
+                        <a ui-sref="activity-detail({id:question.activity.id})">{{question.activity.name}}</a>
                     </td>
                     <td>
-                        <a ui-sref="subject-detail({id:question.subject.id})">{{question.subject.id}}</a>
+                        <a ui-sref="subject-detail({id:question.subject.id})">{{question.subject.name}}</a>
                     </td>
                     <td>
-                        <a ui-sref="user-profile-detail({id:question.userProfile.id})">{{question.userProfile.id}}</a>
+                        <a ui-sref="user-profile-detail({id:question.userProfile.id})">{{question.userProfile.email}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

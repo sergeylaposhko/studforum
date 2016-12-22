@@ -1,9 +1,13 @@
 package ua.knure.laposhko.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.knure.laposhko.domain.Question;
 
+import ua.knure.laposhko.domain.UserProfile;
 import ua.knure.laposhko.repository.QuestionRepository;
+import ua.knure.laposhko.repository.UserProfileRepository;
+import ua.knure.laposhko.service.UserService;
 import ua.knure.laposhko.web.rest.util.HeaderUtil;
 
 import org.slf4j.Logger;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,9 +32,15 @@ import java.util.Optional;
 public class QuestionResource {
 
     private final Logger log = LoggerFactory.getLogger(QuestionResource.class);
-        
+
     @Inject
     private QuestionRepository questionRepository;
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
+
+    @Autowired
+    private UserService userService;
 
     /**
      * POST  /questions : Create a new question.
@@ -45,6 +56,13 @@ public class QuestionResource {
         if (question.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("question", "idexists", "A new question cannot already have an ID")).body(null);
         }
+
+        if(question.getSubject() == null && question.getActivity() != null){
+            question.setSubject(question.getActivity().getSubject());
+        }
+        question.setCreateDate(LocalDate.now());
+        question.setUserProfile(userProfileRepository.findByEmail(userService.getUserWithAuthorities().getEmail()));
+
         Question result = questionRepository.save(question);
         return ResponseEntity.created(new URI("/api/questions/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("question", result.getId().toString()))

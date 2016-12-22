@@ -1,5 +1,5 @@
-main page remove Welcome Java Hipster
-fix this is my footer
++main page remove Welcome Java Hipster
++fix this is my footer
 add some initial data
 extend existing user with some info
 remote user profile from entities

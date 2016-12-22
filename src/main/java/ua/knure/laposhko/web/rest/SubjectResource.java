@@ -1,6 +1,7 @@
 package ua.knure.laposhko.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import ua.knure.laposhko.domain.Feedback;
 import ua.knure.laposhko.domain.Subject;
 
 import ua.knure.laposhko.repository.SubjectRepository;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +29,7 @@ import java.util.Optional;
 public class SubjectResource {
 
     private final Logger log = LoggerFactory.getLogger(SubjectResource.class);
-        
+
     @Inject
     private SubjectRepository subjectRepository;
 

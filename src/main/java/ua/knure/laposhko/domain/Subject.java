@@ -1,6 +1,9 @@
 package ua.knure.laposhko.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +16,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "subject")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Subject implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,7 +43,6 @@ public class Subject implements Serializable {
     private Set<Question> questions = new HashSet<>();
 
     @OneToMany(mappedBy = "subject")
-    @JsonIgnore
     private Set<Feedback> feedbacks = new HashSet<>();
 
     @ManyToMany(mappedBy = "subjects")

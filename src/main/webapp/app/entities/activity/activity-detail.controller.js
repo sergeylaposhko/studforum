@@ -17,5 +17,19 @@
             vm.activity = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
+        Question.query(function (result) {
+            vm.questions = [];
+            vm.searchQuery = null;
+
+            for (var i = 0; i < result.length; i++) {
+                var question = result[i];
+                if (question.activity.id == vm.activity.id) {
+                    vm.questions.push(question);
+                }
+            }
+        })
+
+
     }
 })();

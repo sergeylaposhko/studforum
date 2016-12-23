@@ -48,6 +48,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('activity');
+                    $translatePartialLoader.addPart('question');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Activity', function($stateParams, Activity) {

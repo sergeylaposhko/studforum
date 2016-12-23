@@ -16,7 +16,6 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "subject")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Subject implements Serializable {
 
     private static final long serialVersionUID = 1L;

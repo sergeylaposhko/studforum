@@ -25,6 +25,9 @@ public class ApplicationListener implements org.springframework.context.Applicat
     @Autowired
     private ActivityRepository activityRepository;
 
+    @Autowired
+    private QuestionRepository questionRepository;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
@@ -55,5 +58,14 @@ public class ApplicationListener implements org.springframework.context.Applicat
         activity.setWeight(1d);
 
         activityRepository.save(activity);
+
+        Question question = new Question();
+        question.setSubject(subject);
+        question.setActivity(activity);
+        question.setCreateDate(LocalDate.now());
+        question.setUserProfile(s);
+        question.setText("Was it difficult?");
+
+        questionRepository.save(question);
     }
 }

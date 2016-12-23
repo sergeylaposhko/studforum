@@ -6,12 +6,13 @@ add some initial data
 +feedback - default user
 +feedback - display user name
 +view feedbacks in the subject details page
-questions - to the activities page
++questions - to the activities page
 +questions default create date
 question default activity
 +question default subject from activity
 +question default user
 answers to question detail page
-answer default create page
++answer default create date
++answer default userProfile
 answer default question
 

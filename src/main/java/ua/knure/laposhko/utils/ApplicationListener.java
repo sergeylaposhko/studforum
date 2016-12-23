@@ -35,9 +35,17 @@ public class ApplicationListener implements org.springframework.context.Applicat
         admin.get().setEmail("admin@mail.com");
         userRepository.save(admin.get());
 
-        UserProfile s = new UserProfile();
-        s.setEmail("admin@mail.com");
-        s = userProfileRepository.save(s);
+        UserProfile adminUserProfile = new UserProfile();
+        adminUserProfile.setEmail("admin@mail.com");
+        adminUserProfile = userProfileRepository.save(adminUserProfile);
+
+        Optional<User> user = userRepository.findOneByLogin("user");
+        user.get().setEmail("user@mail.com");
+        userRepository.save(user.get());
+
+        UserProfile userProfile = new UserProfile();
+        userProfile.setEmail("user@mail.com");
+        userProfile = userProfileRepository.save(userProfile);
 
         Subject subject = new Subject();
         subject.setName("Math");
@@ -47,7 +55,7 @@ public class ApplicationListener implements org.springframework.context.Applicat
         Feedback feedback = new Feedback();
         feedback.setText("Cool subject");
         feedback.setCreateDate(LocalDate.now());
-        feedback.setUserProfile(s);
+        feedback.setUserProfile(adminUserProfile);
         feedback.setSubject(subject);
         feedbackRepository.save(feedback);
 
@@ -63,9 +71,20 @@ public class ApplicationListener implements org.springframework.context.Applicat
         question.setSubject(subject);
         question.setActivity(activity);
         question.setCreateDate(LocalDate.now());
-        question.setUserProfile(s);
+        question.setUserProfile(adminUserProfile);
         question.setText("Was it difficult?");
 
         questionRepository.save(question);
+
+        Answer answer = new Answer();
+        answer.setQuestion(question);
+        answer.setText("It was not really difficult for me.");
+        answer.setUserProfile(userProfile);
+        answer.setCreateDate(LocalDate.now());
+        answerRepository.save(answer);
     }
+
+    @Autowired AnswerRepository answerRepository;
+
+
 }

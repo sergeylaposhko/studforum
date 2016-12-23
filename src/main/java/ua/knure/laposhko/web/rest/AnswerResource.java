@@ -1,9 +1,13 @@
 package ua.knure.laposhko.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.knure.laposhko.domain.Answer;
 
+import ua.knure.laposhko.domain.UserProfile;
 import ua.knure.laposhko.repository.AnswerRepository;
+import ua.knure.laposhko.repository.UserProfileRepository;
+import ua.knure.laposhko.service.UserService;
 import ua.knure.laposhko.web.rest.util.HeaderUtil;
 
 import org.slf4j.Logger;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,9 +32,14 @@ import java.util.Optional;
 public class AnswerResource {
 
     private final Logger log = LoggerFactory.getLogger(AnswerResource.class);
-        
+
     @Inject
     private AnswerRepository answerRepository;
+
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     /**
      * POST  /answers : Create a new answer.
@@ -45,6 +55,10 @@ public class AnswerResource {
         if (answer.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("answer", "idexists", "A new answer cannot already have an ID")).body(null);
         }
+
+        answer.setCreateDate(LocalDate.now());
+        answer.setUserProfile(userProfileRepository.findByEmail(userService.getUserWithAuthorities().getEmail()));
+
         Answer result = answerRepository.save(answer);
         return ResponseEntity.created(new URI("/api/answers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("answer", result.getId().toString()))

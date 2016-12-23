@@ -15,7 +15,6 @@ import java.util.Objects;
  * A Feedback.
  */
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @Table(name = "feedback")
 public class Feedback implements Serializable {
 

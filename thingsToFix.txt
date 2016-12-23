@@ -5,7 +5,7 @@ add some initial data
 +feedback - default creation date
 +feedback - default user
 +feedback - display user name
-view feedbacks in the subject details page
++view feedbacks in the subject details page
 questions - to the activities page
 +questions default create date
 question default activity

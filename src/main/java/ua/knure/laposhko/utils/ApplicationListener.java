@@ -3,20 +3,27 @@ package ua.knure.laposhko.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-import ua.knure.laposhko.domain.User;
-import ua.knure.laposhko.domain.UserProfile;
-import ua.knure.laposhko.repository.UserProfileRepository;
-import ua.knure.laposhko.repository.UserRepository;
+import ua.knure.laposhko.domain.*;
+import ua.knure.laposhko.repository.*;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Component
-public class ApplicationListener implements org.springframework.context.ApplicationListener<ContextRefreshedEvent>{
+public class ApplicationListener implements org.springframework.context.ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private UserProfileRepository userProfileRepository;
+
+    @Autowired
+    private SubjectRepository subjectRepository;
+    @Autowired
+    private FeedbackRepository feedbackRepository;
+
+    @Autowired
+    private ActivityRepository activityRepository;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -27,7 +34,26 @@ public class ApplicationListener implements org.springframework.context.Applicat
 
         UserProfile s = new UserProfile();
         s.setEmail("admin@mail.com");
-        userProfileRepository.save(s);
+        s = userProfileRepository.save(s);
 
+        Subject subject = new Subject();
+        subject.setName("Math");
+        subject.setDescription("Subject with mathematical exercises.");
+        subject = subjectRepository.save(subject);
+
+        Feedback feedback = new Feedback();
+        feedback.setText("Cool subject");
+        feedback.setCreateDate(LocalDate.now());
+        feedback.setUserProfile(s);
+        feedback.setSubject(subject);
+        feedbackRepository.save(feedback);
+
+        Activity activity = new Activity();
+        activity.setSubject(subject);
+        activity.setName("Lb1");
+        activity.setDescription("Plus operator");
+        activity.setWeight(1d);
+
+        activityRepository.save(activity);
     }
 }
